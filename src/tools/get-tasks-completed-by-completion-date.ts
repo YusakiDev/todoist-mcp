@@ -21,6 +21,7 @@ export function registerGetTasksCompletedByCompletionDate(server: McpServer, api
             limit: z.number().optional().default(50).describe('Number of tasks to return (max 50)'),
             cursor: z.string().optional().describe('Cursor for pagination'),
         },
+        { readOnlyHint: true },
         async ({
             since,
             until,

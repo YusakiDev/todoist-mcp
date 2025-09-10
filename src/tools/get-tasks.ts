@@ -10,6 +10,7 @@ export function registerGetTasks(server: McpServer, api: TodoistApi) {
         {
             projectId: z.string().optional(),
         },
+        { readOnlyHint: true },
         async ({ projectId }) => {
             const tasks = await getMaxPaginatedResults((params) =>
                 api.getTasks({ projectId, ...params }),

@@ -7,6 +7,7 @@ export function registerGetLabel(server: McpServer, api: TodoistApi) {
         'get-label',
         'Get a label from Todoist',
         { labelId: z.string() },
+        { readOnlyHint: true },
         async ({ labelId }) => {
             const label = await api.getLabel(labelId)
             return {

@@ -121,15 +121,21 @@ const description =
     '- See all uncompletable tasks (without a checkbox); note - this query will also include tasks using italic formatting, use this: "(search: *) & !(search: **) & !(search: ***)"\n'
 
 export function registerGetTasksByFilter(server: McpServer, api: TodoistApi) {
-    server.tool('get-tasks-by-filter', description, { filter: z.string() }, async ({ filter }) => {
-        const tasks = await getMaxPaginatedResults((params) =>
-            api.getTasksByFilter({ query: filter, ...params }),
-        )
-        return {
-            content: tasks.map((task) => ({
-                type: 'text',
-                text: JSON.stringify(task, null, 2),
-            })),
-        }
-    })
+    server.tool(
+        'get-tasks-by-filter',
+        description,
+        { filter: z.string() },
+        { readOnlyHint: true },
+        async ({ filter }) => {
+            const tasks = await getMaxPaginatedResults((params) =>
+                api.getTasksByFilter({ query: filter, ...params }),
+            )
+            return {
+                content: tasks.map((task) => ({
+                    type: 'text',
+                    text: JSON.stringify(task, null, 2),
+                })),
+            }
+        },
+    )
 }

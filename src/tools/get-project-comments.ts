@@ -8,6 +8,7 @@ export function registerGetProjectComments(server: McpServer, api: TodoistApi) {
         'get-project-comments',
         'Get comments from a project in Todoist',
         { projectId: z.string() },
+        { readOnlyHint: true },
         async ({ projectId }) => {
             const comments = await getMaxPaginatedResults((params) =>
                 api.getComments({ projectId, ...params }),

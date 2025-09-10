@@ -8,6 +8,7 @@ export function registerGetTaskComments(server: McpServer, api: TodoistApi) {
         'get-task-comments',
         'Get comments from a task in Todoist',
         { taskId: z.string() },
+        { readOnlyHint: true },
         async ({ taskId }) => {
             const comments = await getMaxPaginatedResults((params) =>
                 api.getComments({ taskId, ...params }),

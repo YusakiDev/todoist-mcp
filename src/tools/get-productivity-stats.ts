@@ -18,6 +18,7 @@ export function registerGetProductivityStats(server: McpServer, api: TodoistApi)
                 .optional()
                 .describe('Timezone to use for statistics (IANA timezone format)'),
         },
+        { readOnlyHint: true },
         async ({ limit, timezone }) => {
             // Construct the query parameters
             const params = new URLSearchParams()

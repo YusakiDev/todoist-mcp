@@ -9,6 +9,7 @@ export function registerGetTask(server: McpServer, api: TodoistApi) {
         {
             taskId: z.string(),
         },
+        { readOnlyHint: true },
         async ({ taskId }) => {
             const task = await api.getTask(taskId)
             return { content: [{ type: 'text', text: JSON.stringify(task, null, 2) }] }

@@ -10,6 +10,7 @@ export function registerGetSections(server: McpServer, api: TodoistApi) {
         {
             projectId: z.string(),
         },
+        { readOnlyHint: true },
         async ({ projectId }) => {
             const sections = await getMaxPaginatedResults((params) =>
                 api.getSections({ projectId, ...params }),

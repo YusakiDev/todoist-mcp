@@ -24,6 +24,7 @@ export function registerGetComments(server: McpServer, api: TodoistApi) {
             cursor: z.string().optional().describe('Pagination cursor'),
             limit: z.number().optional().describe('Max number of comments to return (default 50)'),
         },
+        { readOnlyHint: true },
         async ({ taskId, projectId, cursor, limit }) => {
             // Ensure one and only one of taskId or projectId is provided
             if ((!taskId && !projectId) || (taskId && projectId)) {

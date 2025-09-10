@@ -9,6 +9,7 @@ export function registerGetSection(server: McpServer, api: TodoistApi) {
         {
             sectionId: z.string(),
         },
+        { readOnlyHint: true },
         async ({ sectionId }) => {
             const section = await api.getSection(sectionId)
             return {

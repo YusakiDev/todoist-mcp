@@ -10,6 +10,7 @@ export function registerGetProjectCollaborators(server: McpServer, api: TodoistA
         {
             projectId: z.string(),
         },
+        { readOnlyHint: true },
         async ({ projectId }) => {
             const collaborators = await getMaxPaginatedResults((params) =>
                 api.getProjectCollaborators(projectId, params),

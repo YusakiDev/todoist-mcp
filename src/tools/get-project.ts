@@ -7,6 +7,7 @@ export function registerGetProject(server: McpServer, api: TodoistApi) {
         'get-project',
         'Get a project from Todoist',
         { projectId: z.string() },
+        { readOnlyHint: true },
         async ({ projectId }) => {
             const project = await api.getProject(projectId)
             return {

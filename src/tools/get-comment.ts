@@ -7,6 +7,7 @@ export function registerGetComment(server: McpServer, api: TodoistApi) {
         'get-comment',
         'Get a comment from a task or project in Todoist',
         { commentId: z.string() },
+        { readOnlyHint: true },
         async ({ commentId }) => {
             const comment = await api.getComment(commentId)
             return {

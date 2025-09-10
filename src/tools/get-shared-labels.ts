@@ -10,6 +10,7 @@ export function registerGetSharedLabels(server: McpServer, api: TodoistApi) {
         {
             omitPersonal: z.boolean().optional(),
         },
+        { readOnlyHint: true },
         async ({ omitPersonal }) => {
             const labels = await getMaxPaginatedResults((params) =>
                 api.getSharedLabels({ omitPersonal, ...params }),
