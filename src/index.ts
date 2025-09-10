@@ -12,29 +12,31 @@ import { registerDeleteLabel } from './tools/delete-label.js'
 import { registerDeleteProject } from './tools/delete-project.js'
 import { registerDeleteSection } from './tools/delete-section.js'
 import { registerDeleteTask } from './tools/delete-task.js'
+import { registerFetch } from './tools/fetch.js'
 import { registerGetComment } from './tools/get-comment.js'
 import { registerGetComments } from './tools/get-comments.js'
 import { registerGetLabel } from './tools/get-label.js'
 import { registerGetLabels } from './tools/get-labels.js'
 import { registerGetProductivityStats } from './tools/get-productivity-stats.js'
+import { registerGetProject } from './tools/get-project.js'
 import { registerGetProjectCollaborators } from './tools/get-project-collaborators.js'
 import { registerGetProjectComments } from './tools/get-project-comments.js'
-import { registerGetProject } from './tools/get-project.js'
 import { registerGetProjects } from './tools/get-projects.js'
 import { registerGetSection } from './tools/get-section.js'
 import { registerGetSections } from './tools/get-sections.js'
 import { registerGetSharedLabels } from './tools/get-shared-labels.js'
-import { registerGetTaskComments } from './tools/get-task-comments.js'
 import { registerGetTask } from './tools/get-task.js'
+import { registerGetTaskComments } from './tools/get-task-comments.js'
+import { registerGetTasks } from './tools/get-tasks.js'
 import { registerGetTasksByFilter } from './tools/get-tasks-by-filter.js'
 import { registerGetTasksCompletedByCompletionDate } from './tools/get-tasks-completed-by-completion-date.js'
 import { registerGetTasksCompletedByDueDate } from './tools/get-tasks-completed-by-due-date.js'
-import { registerGetTasks } from './tools/get-tasks.js'
 import { registerMoveTasks } from './tools/move-tasks.js'
 import { registerQuickAddTask } from './tools/quick-add-task.js'
 import { registerRemoveSharedLabel } from './tools/remove-shared-label.js'
 import { registerRenameSharedLabel } from './tools/rename-shared-label.js'
 import { registerReopenTask } from './tools/reopen-task.js'
+import { registerSearch } from './tools/search.js'
 import { registerUpdateComment } from './tools/update-comment.js'
 import { registerUpdateLabel } from './tools/update-label.js'
 import { registerUpdateProject } from './tools/update-project.js'
@@ -102,6 +104,10 @@ registerGetLabels(server, api)
 registerGetSharedLabels(server, api)
 registerRemoveSharedLabel(server, api)
 registerRenameSharedLabel(server, api)
+
+/* ChatGPT-required tools */
+registerSearch(server, api)
+registerFetch(server, api)
 
 async function main() {
     const transport = new StdioServerTransport()
